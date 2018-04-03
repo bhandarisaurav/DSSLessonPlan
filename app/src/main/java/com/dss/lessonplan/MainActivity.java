@@ -1,6 +1,7 @@
 package com.dss.lessonplan;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -21,6 +23,19 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button button = (Button) findViewById(R.id.button1);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,night.class);
+                startActivity(myIntent);
+            }
+        });
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -83,9 +98,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
-            setContentView(R.layout.night_layout);
 
+            Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivity(i);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
