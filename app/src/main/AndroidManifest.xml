@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".night"/>
+        <activity android:name=".grades_list"
+            android:label="Part 1"
+            android:parentActivityName="com.dss.lessonplan.grades_list" />
     </application>
 
 </manifest>
