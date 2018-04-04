@@ -42,12 +42,10 @@ public class grades_list extends AppCompatActivity {
 
     private void getGrades() {
 
-        grades.add("X-Men");
-        grades.add("IRONMAN");
-        grades.add("SPIDY");
-        grades.add("NARNIA");
-        grades.add("LIONKING");
-        grades.add("AVENGERS");
+        grades.add("Grade 1");
+        grades.add("Grade 2");
+        grades.add("Grade 3");
+        grades.add("Grade 4");
+        grades.add("Grade 5");
     }
 }
-//Hello
