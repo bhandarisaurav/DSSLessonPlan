@@ -1,13 +1,16 @@
 package com.dss.lessonplan.grades;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dss.lessonplan.MainActivity;
 import com.dss.lessonplan.R;
 
 import java.util.ArrayList;
@@ -37,6 +40,16 @@ public class grade2 extends AppCompatActivity {
 
                 String selectedSubject = subjects.get(position);
                 Toast.makeText(getApplicationContext(), "Subject Selected : " + selectedSubject, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(grade2.this, MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Home Page", Toast.LENGTH_SHORT).show();
             }
         });
     }
