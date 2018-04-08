@@ -19,9 +19,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".grades_list"
-            android:label="Part 1"
-            android:parentActivityName="com.dss.lessonplan.grades_list" />
+        <activity
+            android:name=".grades_list1"
+            android:label="Grades 1 - 5"
+            android:parentActivityName=".grades_list1" />
+        <activity
+            android:name=".grades_list2"
+            android:label="Grades 6 - 8"
+            android:parentActivityName=".grades_list2" />
+        <activity
+            android:name=".grades_list3"
+            android:label="Grades 9 - 10"
+            android:parentActivityName=".grades_list3" />
+        <activity
+            android:name=".grades.grade1"
+            android:label="Grade 1"
+            android:parentActivityName=".grades.grade1" />
+        <activity
+            android:name=".grades.grade2"
+            android:label="Grade 2"
+            android:parentActivityName=".grades.grade2" />
+        <activity
+            android:name=".grades.grade3"
+            android:label="Grade 3"
+            android:parentActivityName=".grades.grade3" />
+        <activity
+            android:name=".grades.grade4"
+            android:label="Grade 4"
+            android:parentActivityName=".grades.grade4" />
+        <activity
+            android:name=".grades.grade5"
+            android:label="Grade 5"
+            android:parentActivityName=".grades.grade5" />
+        <activity
+            android:name=".grades.grade6"
+            android:label="Grade 6"
+            android:parentActivityName=".grades.grade6" />
+        <activity
+            android:name=".grades.grade7"
+            android:label="Grade 7"
+            android:parentActivityName=".grades.grade7" />
+        <activity
+            android:name=".grades.grade8"
+            android:label="Grade 8"
+            android:parentActivityName=".grades.grade8" />
+        <activity
+            android:name=".grades.grade9"
+            android:label="Grade 9"
+            android:parentActivityName=".grades.grade9" />
+        <activity
+            android:name=".grades.grade10"
+            android:label="Grade 10"
+            android:parentActivityName=".grades.grade10" />
     </application>
 
 </manifest>

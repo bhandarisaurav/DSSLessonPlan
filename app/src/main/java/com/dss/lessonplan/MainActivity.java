@@ -24,11 +24,29 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.button1);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button1 = findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                Intent myIntent = new Intent(MainActivity.this,grades_list.class);
+                Intent myIntent = new Intent(MainActivity.this, grades_list1.class);
+                startActivity(myIntent);
+            }
+        });
+
+        Button button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(MainActivity.this, grades_list2.class);
+                startActivity(myIntent);
+            }
+        });
+
+        Button button3 = findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(MainActivity.this, grades_list3.class);
                 startActivity(myIntent);
             }
         });
