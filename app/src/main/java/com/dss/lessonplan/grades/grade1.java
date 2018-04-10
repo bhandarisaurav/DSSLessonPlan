@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.dss.lessonplan.MainActivity;
 import com.dss.lessonplan.R;
+import com.dss.lessonplan.urlHandler;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,10 @@ public class grade1 extends AppCompatActivity {
 
                 String selectedSubject = subjects.get(position);
                 Toast.makeText(getApplicationContext(), "Subject Selected : " + selectedSubject, Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(grade1.this, urlHandler.class);
+                myIntent.putExtra("class", "1");
+                myIntent.putExtra("subject", selectedSubject);
+                startActivity(myIntent);
             }
         });
 

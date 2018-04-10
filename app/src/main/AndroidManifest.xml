@@ -71,6 +71,7 @@
             android:name=".grades.grade10"
             android:label="Grade 10"
             android:parentActivityName=".grades.grade10" />
+        <activity android:name=".urlHandler"></activity>
     </application>
 
 </manifest>
