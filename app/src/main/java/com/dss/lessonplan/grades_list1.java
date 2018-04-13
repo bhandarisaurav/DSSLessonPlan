@@ -69,17 +69,16 @@ public class grades_list1 extends AppCompatActivity {
                     Intent myIntent = new Intent(grades_list1.this, grade5.class);
                     startActivity(myIntent);
                 }
-
-
                 Toast.makeText(getApplicationContext(), "Grade Selected : " + selectedGrade, Toast.LENGTH_LONG).show();
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(grades_list1.this, MainActivity.class);
+
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Home Page", Toast.LENGTH_SHORT).show();
             }

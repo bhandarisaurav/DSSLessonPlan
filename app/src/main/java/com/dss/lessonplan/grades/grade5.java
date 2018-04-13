@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.dss.lessonplan.MainActivity;
 import com.dss.lessonplan.R;
+import com.dss.lessonplan.urlHandler;
 
 import java.util.ArrayList;
 
@@ -40,9 +41,13 @@ public class grade5 extends AppCompatActivity {
 
                 String selectedSubject = subjects.get(position);
                 Toast.makeText(getApplicationContext(), "Subject Selected : " + selectedSubject, Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(grade5.this, urlHandler.class);
+                myIntent.putExtra("class", "5");
+                myIntent.putExtra("subject", selectedSubject);
+                startActivity(myIntent);
             }
         });
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

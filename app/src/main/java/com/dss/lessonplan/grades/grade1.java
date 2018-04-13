@@ -16,6 +16,7 @@ import com.dss.lessonplan.urlHandler;
 
 import java.util.ArrayList;
 
+
 public class grade1 extends AppCompatActivity {
 
     ArrayList<String> subjects;
@@ -49,7 +50,7 @@ public class grade1 extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

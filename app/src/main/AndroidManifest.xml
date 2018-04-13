@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dss.lessonplan">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_round"
@@ -71,7 +73,14 @@
             android:name=".grades.grade10"
             android:label="Grade 10"
             android:parentActivityName=".grades.grade10" />
-        <activity android:name=".urlHandler"></activity>
+        <activity
+            android:name=".urlHandler"
+            android:label="Lesson Plan" />
+
+        <activity
+            android:name=".display_data"
+            android:label="Lesson Plan"
+            android:parentActivityName=".display_data" />
     </application>
 
 </manifest>
