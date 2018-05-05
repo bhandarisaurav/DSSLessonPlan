@@ -44,6 +44,7 @@ public class grade9 extends AppCompatActivity {
                 Intent myIntent = new Intent(grade9.this, urlHandler.class);
                 myIntent.putExtra("class", "9");
                 myIntent.putExtra("subject", selectedSubject);
+                myIntent.putExtra("day", 0);
                 startActivity(myIntent);
             }
         });

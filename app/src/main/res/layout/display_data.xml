@@ -2,6 +2,7 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,6 +19,47 @@
 
             android:isScrollContainer="true">
 
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0"
+                    tools:ignore="UselessParent">
+
+                    <Button
+                        android:id="@+id/aclass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="Class"
+                        android:textStyle="bold"
+                        tools:ignore="ButtonStyle" />
+
+                    <Button
+                        android:id="@+id/subject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="Subject"
+                        android:textStyle="bold"
+                        tools:ignore="ButtonStyle" />
+
+                    <Button
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="Date"
+                        android:textStyle="bold"
+                        tools:ignore="ButtonStyle" />
+                </LinearLayout>
+            </RelativeLayout>
             <TableRow
                 android:id="@+id/row_1"
                 android:layout_width="match_parent"
@@ -43,7 +85,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="32dp"
-                    android:text="Row 1"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
 
@@ -72,7 +114,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="25dp"
-                    android:text="Row 2"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
 
@@ -101,7 +143,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="30dp"
-                    android:text="Row 3"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
 
@@ -130,7 +172,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="30dp"
-                    android:text="Row 4"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
 
@@ -159,7 +201,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="30dp"
-                    android:text="Row 5"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
 
@@ -188,7 +230,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="20dp"
-                    android:text="Row 6"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
 
@@ -217,7 +259,7 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:padding="20dp"
-                    android:text="Row 6"
+                    android:text="@string/table_value"
                     android:textColor="#111" />
             </TableRow>
         </TableLayout>

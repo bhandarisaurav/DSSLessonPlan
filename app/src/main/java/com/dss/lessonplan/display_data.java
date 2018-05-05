@@ -9,6 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class display_data extends AppCompatActivity {
+    int day;
+    String subject;
+    String aclass;
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,20 +26,43 @@ public class display_data extends AppCompatActivity {
         String classwork = intent.getStringExtra("Classwork");
         String homework = intent.getStringExtra("Homework");
         String time = intent.getStringExtra("Time");
+        subject = intent.getStringExtra("subject");
+        aclass = intent.getStringExtra("class");
+        date = intent.getStringExtra("date");
+        day = intent.getIntExtra("day", 0);
+        System.out.println("===========================================");
+        System.out.println("day = " + day);
+        System.out.println("===========================================");
 
-        TextView t1 = findViewById(R.id.lesson);
-        TextView t2 = findViewById(R.id.topic);
-        TextView t3 = findViewById(R.id.objective);
-        TextView t4 = findViewById(R.id.classwork);
-        TextView t5 = findViewById(R.id.homework);
-        TextView t6 = findViewById(R.id.time);
+        if (objective == null || objective.equals("")) {
+            System.out.println("===========================================");
+            System.out.println("Null Data");
+            System.out.println("===========================================");
+        } else {
 
-        t1.setText(lesson);
-        t2.setText(topic);
-        t3.setText(objective);
-        t4.setText(classwork);
-        t5.setText(homework);
-        t6.setText(time);
+            TextView t1 = findViewById(R.id.lesson);
+            TextView t2 = findViewById(R.id.topic);
+            TextView t3 = findViewById(R.id.objective);
+            TextView t4 = findViewById(R.id.classwork);
+            TextView t5 = findViewById(R.id.homework);
+            TextView t6 = findViewById(R.id.time);
+
+            Button aclass1 = findViewById(R.id.aclass);
+            Button subject1 = findViewById(R.id.subject);
+            Button date1 = findViewById(R.id.date);
+
+            t1.setText(lesson);
+            t2.setText(topic);
+            t3.setText(objective);
+            t4.setText(classwork);
+            t5.setText(homework);
+            t6.setText(time);
+            aclass1.setText(String.format("Grade %s", aclass));
+            subject1.setText(subject);
+            String final_date = date + " " + day;
+            date1.setText(final_date);
+        }
+
 
 
     }
@@ -53,6 +80,15 @@ public class display_data extends AppCompatActivity {
         t1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Previous", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(display_data.this, urlHandler.class);
+                Integer val = day - 1;
+                System.out.println("===========================================");
+                System.out.println(" Previous day = " + val);
+                System.out.println("===========================================");
+                intent.putExtra("day", val);
+                intent.putExtra("class", aclass);
+                intent.putExtra("subject", subject);
+                startActivity(intent);
             }
         });
 
@@ -60,6 +96,16 @@ public class display_data extends AppCompatActivity {
         t2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Next", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(display_data.this, urlHandler.class);
+                Integer val = day + 1;
+                System.out.println("===========================================");
+                System.out.println(" Next day = " + val);
+                System.out.println("===========================================");
+                intent.putExtra("day", val);
+                intent.putExtra("class", aclass);
+                intent.putExtra("subject", subject);
+                startActivity(intent);
+
 
             }
         });

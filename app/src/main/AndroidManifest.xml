@@ -76,11 +76,11 @@
         <activity
             android:name=".urlHandler"
             android:label="Lesson Plan" />
-
         <activity
             android:name=".display_data"
             android:label="Lesson Plan"
             android:parentActivityName=".display_data" />
+        <activity android:name=".about_us" />
     </application>
 
 </manifest>

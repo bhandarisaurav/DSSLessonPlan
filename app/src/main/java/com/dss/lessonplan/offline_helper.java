@@ -21,9 +21,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class urlHandler extends AppCompatActivity {
+public class offline_helper extends AppCompatActivity {
 
-    private String TAG = urlHandler.class.getSimpleName();
     List<LessonPlan> lessonPlanList;
     LessonPlan lessonPlan = new LessonPlan();
     String aclass;
@@ -32,7 +31,7 @@ public class urlHandler extends AppCompatActivity {
     String date;
     int day;
     String ip = IP.getIP();
-
+    private String TAG = urlHandler.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +77,11 @@ public class urlHandler extends AppCompatActivity {
         ProgressDialog progressDialog;
 
         fetchData() {
-            progressDialog = new ProgressDialog(urlHandler.this);
+            progressDialog = new ProgressDialog(offline_helper.this);
         }
 
         @Override
         protected void onPreExecute() {
-            /**
-             * Execute first before fetching
-             * then doInBackground method executed
-             */
             progressDialog.setMessage("Fetching Data...");
             progressDialog.show();
             progressDialog.setCancelable(false);
@@ -96,41 +91,18 @@ public class urlHandler extends AppCompatActivity {
         protected String doInBackground(String... params) {
             HttpGetRequestHandler httpGetRequestHandler = new HttpGetRequestHandler();
 
-            // Making a request to url and getting response
             String jsonStr = httpGetRequestHandler.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
 
             if (jsonStr != null) {
                 try {
-//                    System.out.println("test");
                     JSONArray jsonArray = new JSONArray(jsonStr);
 
                     for (int i = 0; i < jsonArray.length(); i++) {
-
-//                        Admin admin = new Admin();
                         JSONObject jo = (JSONObject) jsonArray.get(i);
 
                         Log.e(TAG, "Response from url: " + jo);
-
-
-//                        System.out.println(jo);
-//
-//                        String fullName = jo.getString("fullName");
-//                        String post = jo.getString("post");
-//                        String roomNo = jo.getString("roomNo");
-//                        String status = jo.getString("status");
-//
-//
-//                        admin.setFullName(fullName);
-//                        admin.setPost(post);
-//                        admin.setRoomNo(roomNo);
-//                        admin.setStatus(status);
-//
-//                        adminList.add(admin);
-
-//                        System.out.println("test" + jo.getString("Classwork")); working
-
 
                         lessonPlan.setLesson(jo.getString("Lesson"));
                         lessonPlan.setTopic(jo.getString("Topic"));
@@ -169,13 +141,10 @@ public class urlHandler extends AppCompatActivity {
                 });
 
             }
-//            System.out.println("AdminList Inside DoBackground is : "+adminList);
             if (lessonPlanList != null) {
-//                System.out.println("success");
                 System.out.println(lessonPlanList);
                 return "Successfully Fetched";
             }
-//            }else{
             return null;
 
         }
@@ -186,12 +155,12 @@ public class urlHandler extends AppCompatActivity {
             progressDialog.dismiss();
             if (lessonPlanList == null) {
                 String errorMessage = "Couldn't get json from server. Check Internet Connectivity!!";
-                Intent intent = new Intent(urlHandler.this, MainActivity.class);
+                Intent intent = new Intent(offline_helper.this, MainActivity.class);
                 intent.putExtra("errorMessage", errorMessage);
                 startActivity(intent);
             } else {
 
-                Intent intent = new Intent(urlHandler.this, display_data.class);
+                Intent intent = new Intent(offline_helper.this, display_data.class);
                 intent.putExtra("Lesson", lessonPlan.getLesson());
                 intent.putExtra("Topic", lessonPlan.getTopic());
                 intent.putExtra("Objective", lessonPlan.getObjective());

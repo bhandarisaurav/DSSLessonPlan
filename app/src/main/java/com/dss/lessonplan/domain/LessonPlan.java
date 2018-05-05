@@ -2,12 +2,31 @@ package com.dss.lessonplan.domain;
 
 public class LessonPlan {
 
-    String lesson;
-    String topic;
-    String objective;
-    String classwork;
-    String homework;
-    String time;
+    private String aclass;
+    private String subject;
+    private String lesson;
+    private String topic;
+    private String objective;
+    private String classwork;
+    private String homework;
+    private String time;
+    private String date;
+
+    public String getAclass() {
+        return aclass;
+    }
+
+    public void setAclass(String aclass) {
+        this.aclass = aclass;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public String getLesson() {
         return lesson;
@@ -55,5 +74,13 @@ public class LessonPlan {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
