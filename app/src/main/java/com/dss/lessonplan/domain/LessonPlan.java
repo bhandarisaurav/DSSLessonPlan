@@ -11,6 +11,7 @@ public class LessonPlan {
     private String homework;
     private String time;
     private String date;
+    private String message;
 
     public String getAclass() {
         return aclass;
@@ -18,6 +19,14 @@ public class LessonPlan {
 
     public void setAclass(String aclass) {
         this.aclass = aclass;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getSubject() {

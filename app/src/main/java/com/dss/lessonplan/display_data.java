@@ -1,12 +1,17 @@
 package com.dss.lessonplan;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class display_data extends AppCompatActivity {
     int day;
@@ -59,7 +64,7 @@ public class display_data extends AppCompatActivity {
             t6.setText(time);
             aclass1.setText(String.format("Grade %s", aclass));
             subject1.setText(subject);
-            String final_date = date + " " + day;
+            String final_date = date;
             date1.setText(final_date);
         }
 
@@ -88,6 +93,7 @@ public class display_data extends AppCompatActivity {
                 intent.putExtra("day", val);
                 intent.putExtra("class", aclass);
                 intent.putExtra("subject", subject);
+                shakeItBaby();
                 startActivity(intent);
             }
         });
@@ -104,10 +110,19 @@ public class display_data extends AppCompatActivity {
                 intent.putExtra("day", val);
                 intent.putExtra("class", aclass);
                 intent.putExtra("subject", subject);
+                shakeItBaby();
                 startActivity(intent);
 
 
             }
         });
+    }
+
+    private void shakeItBaby() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            ((Vibrator) Objects.requireNonNull(getSystemService(VIBRATOR_SERVICE))).vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            ((Vibrator) Objects.requireNonNull(getSystemService(VIBRATOR_SERVICE))).vibrate(150);
+        }
     }
 }

@@ -1,9 +1,7 @@
 package com.dss.lessonplan;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -138,15 +136,20 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void syncData(MenuItem item) {
-        final ProgressDialog dialog = ProgressDialog.show(this, "Offline Data", "Downloading Data Please Wait...", true);
-        dialog.show();
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                dialog.dismiss();
-            }
-        }, 3000);
+        Intent myIntent = new Intent(MainActivity.this, offline_helper.class);
+        startActivity(myIntent);
+
+
+//                final ProgressDialog dialog = ProgressDialog.show(this, "Offline Data", "Downloading Data Please Wait...", true);
+//        dialog.show();
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            public void run() {
+//                dialog.dismiss();
+//            }
+//        }, 3000);
     }
 
     public void about(MenuItem item) {

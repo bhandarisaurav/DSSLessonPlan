@@ -62,6 +62,7 @@ public class grade5 extends AppCompatActivity {
     private void getSubjects() {
         subjects.add("English");
         subjects.add("Nepali");
+        subjects.add("Dance");
         subjects.add("Science");
         subjects.add("Mathematics");
         subjects.add("Computer Science");

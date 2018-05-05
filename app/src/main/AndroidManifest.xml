@@ -3,6 +3,7 @@
     package="com.dss.lessonplan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -81,6 +82,7 @@
             android:label="Lesson Plan"
             android:parentActivityName=".display_data" />
         <activity android:name=".about_us" />
+        <activity android:name=".offline_helper" />
     </application>
 
 </manifest>

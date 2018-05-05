@@ -6,10 +6,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.dss.lessonplan.database.DatabaseHelper;
 import com.dss.lessonplan.domain.LessonPlan;
 import com.dss.lessonplan.utils.HttpGetRequestHandler;
 import com.dss.lessonplan.utils.IP;
@@ -18,7 +17,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class urlHandler extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class urlHandler extends AppCompatActivity {
     String subject;
     String url;
     String date;
+    String date1;
     int day;
     String ip = IP.getIP();
 
@@ -56,22 +59,22 @@ public class urlHandler extends AppCompatActivity {
         new fetchData().execute();
     }
 
-    public void onClickMethod(View view) {
-        Button t1 = findViewById(R.id.previous);
-        t1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Previous", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Button t2 = findViewById(R.id.next);
-        t2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Next", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
+//    public void onClickMethod(View view) {
+//        Button t1 = findViewById(R.id.previous);
+//        t1.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "Previous", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        Button t2 = findViewById(R.id.next);
+//        t2.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "Next", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//    }
 
     public class fetchData extends AsyncTask<String, Void, String> {
 
@@ -131,13 +134,13 @@ public class urlHandler extends AppCompatActivity {
 
 //                        System.out.println("test" + jo.getString("Classwork")); working
 
-
                         lessonPlan.setLesson(jo.getString("Lesson"));
                         lessonPlan.setTopic(jo.getString("Topic"));
                         lessonPlan.setObjective(jo.getString("Objective"));
                         lessonPlan.setClasswork(jo.getString("Classwork"));
                         lessonPlan.setHomework(jo.getString("Homework"));
                         lessonPlan.setTime(jo.getString("Time"));
+                        lessonPlan.setDate(jo.getString("Date"));
                         day = jo.getInt("day");
                         date = jo.getString("month");
                         lessonPlanList.add(lessonPlan);
@@ -161,21 +164,40 @@ public class urlHandler extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+//                        Toast.makeText(getApplicationContext(),
+//                                "Couldn't get json from server. Check Internet Connectivity!!",
+//                                Toast.LENGTH_LONG)
+//                                .show();
                         Toast.makeText(getApplicationContext(),
-                                "Couldn't get json from server. Check Internet Connectivity!!",
+                                "Couldn't get json from server. Getting From Local Database",
                                 Toast.LENGTH_LONG)
                                 .show();
                     }
                 });
 
+                //offline data loader
+                NumberFormat formatter = new DecimalFormat("00");
+
+                java.text.SimpleDateFormat f = new java.text.SimpleDateFormat("MMM");
+                java.text.SimpleDateFormat f1 = new java.text.SimpleDateFormat("d");
+
+                String m = f.format(new Date());
+                int d = Integer.parseInt(f1.format(new Date()));
+
+                if (day == 0)
+                    date1 = String.format("%s-%s", formatter.format(d), m);
+                else
+                    date1 = String.format("%s-%s", formatter.format(d + day), m);
+                DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+                lessonPlan = dbHelper.viewData(aclass, subject, date1);
             }
-//            System.out.println("AdminList Inside DoBackground is : "+adminList);
-            if (lessonPlanList != null) {
-//                System.out.println("success");
-                System.out.println(lessonPlanList);
+
+            if (lessonPlan != null) {
+
+                System.out.println(lessonPlan);
                 return "Successfully Fetched";
             }
-//            }else{
+
             return null;
 
         }
@@ -201,13 +223,19 @@ public class urlHandler extends AppCompatActivity {
                 intent.putExtra("day", day);
                 intent.putExtra("subject", subject);
                 intent.putExtra("class", aclass);
-                intent.putExtra("date", date);
+                if (date == null || date.equals(""))
+                    intent.putExtra("date", lessonPlan.getDate());
+                else
+                    intent.putExtra("date", lessonPlan.getDate());
+
                 startActivity(intent);
 
 
             }
         }
     }
+
+
 }
 
 

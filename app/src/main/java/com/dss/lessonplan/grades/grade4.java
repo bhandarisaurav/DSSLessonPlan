@@ -64,6 +64,7 @@ public class grade4 extends AppCompatActivity {
 
         subjects.add("English");
         subjects.add("Nepali");
+        subjects.add("Dance");
         subjects.add("Science");
         subjects.add("Mathematics");
         subjects.add("Computer Science");
