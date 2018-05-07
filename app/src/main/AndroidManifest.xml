@@ -81,8 +81,12 @@
             android:name=".display_data"
             android:label="Lesson Plan"
             android:parentActivityName=".display_data" />
-        <activity android:name=".about_us" />
-        <activity android:name=".offline_helper" />
+        <activity
+            android:name=".about_us"
+            android:label="About Developer" />
+        <activity
+            android:name=".offline_helper"
+            android:label="Download Data" />
     </application>
 
 </manifest>

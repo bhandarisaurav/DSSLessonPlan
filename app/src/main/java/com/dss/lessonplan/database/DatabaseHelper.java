@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public boolean insertData(LessonPlan lessonPlan) {
+    public void insertData(LessonPlan lessonPlan) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Class", lessonPlan.getAclass());
@@ -57,9 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("Time", lessonPlan.getTime());
         contentValues.put("Date", lessonPlan.getDate());
 
-        long result = sqLiteDatabase.insertWithOnConflict(TABLE_NAME, null, contentValues, CONFLICT_REPLACE);
+        sqLiteDatabase.insertWithOnConflict(TABLE_NAME, null, contentValues, CONFLICT_REPLACE);
         sqLiteDatabase.close();
-        return result != -1;
     }
 
     public LessonPlan viewData(String aclass, String subject, String date) {

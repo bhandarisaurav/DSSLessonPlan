@@ -39,10 +39,19 @@ public class display_data extends AppCompatActivity {
         System.out.println("day = " + day);
         System.out.println("===========================================");
 
-        if (objective == null || objective.equals("")) {
+        if ((objective == null || objective.equals("")) && (classwork == null || classwork.equals(""))) {
             System.out.println("===========================================");
             System.out.println("Null Data");
             System.out.println("===========================================");
+            Intent i = new Intent(display_data.this, urlHandler.class);
+            Integer val = day + 1;
+            System.out.println("===========================================");
+            System.out.println(" Next day = " + val);
+            System.out.println("===========================================");
+            i.putExtra("day", val);
+            i.putExtra("class", aclass);
+            i.putExtra("subject", subject);
+            startActivity(i);
         } else {
 
             TextView t1 = findViewById(R.id.lesson);

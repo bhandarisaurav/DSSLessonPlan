@@ -20,13 +20,13 @@ public class about_us extends AppCompatActivity {
 
                 .isRTL(false)
                 .setImage(R.drawable.about_image)
-                .setDescription(" ")
+                .setDescription("This application is developed by Saurav Bhandari for use in Deerwalk Institute of Technology.\n" +
+                        "If you are in need of developer, reach me at 984300114 (saurav.bhandari@deerwalk.edu.np).\n Feel Free to Contact me.")
                 .addItem(new Element().setTitle("Version 6.2"))
                 .addGroup("Connect with us")
                 .addEmail("saurav.bhandari@deerwalk.edu.np")
                 .addWebsite("http://lessonplan.sifal.dwit.edu.np")
                 .addFacebook("sauravbh1")
-                .addTwitter("medyo80")
                 .addYoutube("UCmCfg6O8xUYz3VRHlpo6sBg")
                 .addInstagram("__sauravbhandari__")
                 .addGitHub("saurav529")
